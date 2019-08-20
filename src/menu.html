@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu</title>
+    <style>
+        :root {
+            box-sizing: border-box;
+            font-size: calc(1vw + 0.6em);
+        }
+
+        *, ::before, ::after {
+            box-sizing: inherit;
+        }
+
+        /* reset margins */
+        * + * {
+            margin-top: 0;
+        }
+
+        body {
+            background-color: white;
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+        }
+
+        .header {
+            background-color: black;
+            /* establishes the height of the header (otherwise it contains nothing) */
+            padding: 2em 0;
+        }
+
+        .main {
+            padding: 2em;
+        }
+
+        .nav {
+            /* takes the navigation menu out of the flow and establishes the context for absolute positioning */
+            position: relative;
+        }
+
+        .nav-menu-toggle {
+            position: absolute;
+            /* establishes responsive units to calculate the position of this element */
+            font-size: 1em;
+
+            border: 0;
+            background-color: transparent;
+
+            /* centers the button with 0.5em padding */
+            top: -3.5em;
+            right: 0.5em;
+
+            width: 3em;
+            height: 3em;
+
+            line-height: 1;
+            text-indent: 5em;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .nav-menu-toggle::after {
+            position: absolute;
+            display: block;
+            text-indent: 0;
+            content: "\2261";
+
+            /* make the font the same size as the font of the parent button */
+            font-size: 3em;
+
+            /* the upper distance is influenced also by the line height set in the parent button */
+            top: 0;
+
+            /* this is an individual setting calculated as based on the char's relative width */
+            right: 0.2em;
+
+            color: white;
+        }
+
+        .nav-menu-dropdown {
+            display: none;
+
+            position: absolute;
+            right: 0;
+            left: 0;
+        }
+
+        .nav-menu-dropdown.is-open {
+            display: block;
+        }
+
+        .nav-menu {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .nav-menu > li + li {
+            border-top: solid 1px #cccccc;
+        }
+
+        .nav-menu > li > a {
+            padding: 0.8em 1em;
+            display: block;
+            font-weight: normal;
+            color: white;
+        }
+
+        .nav-menu > li > a:link {
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .nav-menu > li > a:visited {
+        }
+
+        .nav-menu > li > a:hover {
+            background-color: deepskyblue;
+        }
+
+        .nav-menu > li > a:active {
+        }
+
+    </style>
+</head>
+<body>
+
+<header class="header"></header>
+
+<nav class="nav">
+    <button class="nav-menu-toggle" id="nav-menu-toggle">Toggle</button>
+    <div class="nav-menu-dropdown" id="nav-menu-dropdown">
+        <ul class="nav-menu">
+            <li><a href="#profile">Profile</a></li>
+            <li><a href="#career">Career</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="main">
+    <section id="profile">
+        <h2>Profile</h2>
+        <p>Hello Profile</p>
+    </section>
+    <section id="career">
+        <h2>Career</h2>
+        <p>Hello Career</p>
+    </section>
+    <section id="blog">
+        <h2>Blog</h2>
+        <p>Hello Blog</p>
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Hello Contact</p>
+    </section>
+</main>
+
+<script type="text/javascript">
+    (function () {
+        var button = document.getElementById('nav-menu-toggle');
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            var menu = document.getElementById('nav-menu-dropdown');
+            menu.classList.toggle('is-open');
+        });
+
+
+    })();
+</script>
+</body>
+</html>

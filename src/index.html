@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <style>
+        :root {
+            box-sizing: border-box;
+        }
+        *, ::before, ::after {
+            box-sizing: inherit;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 1fr;
+            grid-gap: 0.5em;
+
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        .grid > * {
+            background-color: darkgray;
+            color: white;
+            border-radius: 0.5em;
+            padding: 2em;
+        }
+
+        /*.a {*/
+        /*    grid-column: 1 / 2;*/
+        /*    grid-row: 1 / 3;*/
+        /*}*/
+
+        /*.b {*/
+        /*    grid-column: 2 / 4;*/
+        /*    grid-row: 1 / 2;*/
+        /*}*/
+
+        /*.c {*/
+        /*    grid-column: 2 / 3;*/
+        /*    grid-row: 2 / 3;*/
+        /*}*/
+
+        /*.d {*/
+        /*    grid-column: 3 / 4;*/
+        /*    grid-row: 2 / 3;*/
+        /*}*/
+    </style>
+    <title>Hello Grid</title>
+</head>
+<body>
+    <div class="grid">
+        <div class="a">a</div>
+        <div class="b">b</div>
+        <div class="c">c</div>
+        <div class="d">d</div>
+        <div class="e">e</div>
+        <div class="f">f</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modal Dialog</title>
+    <style>
+        :root {
+            box-sizing: border-box;
+        }
+
+        *, ::before, ::after {
+            box-sizing: inherit;
+        }
+
+        * + * {
+            margin-bottom: 1.5em;
+        }
+
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+        }
+
+        .top-banner {
+            padding: 1em 0;
+            background-color: #ffd698;
+        }
+
+        .top-banner-inner {
+            width: 80%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        button {
+            padding: 0.5em 0.7em;
+            border: 1px solid #8d8d8d;
+            background-color: white;
+            font-size: 1em;
+        }
+
+        .modal {
+            display: none;
+        }
+
+        .modal-drop {
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.5);
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+
+        .modal-body {
+            position: fixed;
+            top: 3em;
+            right: 20%;
+            bottom: 3em;
+            left: 20%;
+            padding: 2em 3em;
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body>
+<header class="top-banner">
+    <div class="top-banner-inner">
+        <p>Find what is going on at Wombat Coffee each time you press this button
+            <button id="open">Sign Up</button>
+        </p>
+    </div>
+</header>
+<div class="modal" id="modal">
+    <div class="modal-drop"></div>
+    <div class="modal-body">
+        <button class="modal-close" id="close">close</button>
+        <h2>Wombat Newsletter</h2>
+        <p>Sign up for our monthly newsletter. No spam. We promise.</p>
+        <form>
+            <p>
+                <label for="email">Email address:</label>
+                <input type="email" name="email"/>
+            </p>
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var button = document.getElementById('open');
+    var close = document.getElementById('close');
+    var modal = document.getElementById('modal');
+
+    button.addEventListener('click', function (event) {
+        event.preventDefault();
+        modal.style.display = 'block';
+    });
+
+    close.addEventListener('click', function (event) {
+        event.preventDefault();
+        modal.style.display = 'none';
+    });
+</script>
+</body>
+</html>
