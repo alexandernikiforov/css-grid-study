@@ -27,30 +27,20 @@
 
         .header {
             background-color: black;
-            /* establishes the height of the header (otherwise it contains nothing) */
-            padding: 2em 0;
-        }
 
-        .main {
-            padding: 2em;
-        }
-
-        .nav {
-            /* takes the navigation menu out of the flow and establishes the context for absolute positioning */
-            position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .nav-menu-toggle {
-            position: absolute;
+            /* push the button to the right */
+            margin-left: auto;
+
             /* establishes responsive units to calculate the position of this element */
             font-size: 1em;
 
             border: 0;
             background-color: transparent;
-
-            /* centers the button with 0.5em padding */
-            top: -3.5em;
-            right: 0.5em;
 
             width: 3em;
             height: 3em;
@@ -79,26 +69,26 @@
             color: white;
         }
 
-        .nav-menu-dropdown {
-            display: none;
-
-            position: absolute;
-            right: 0;
-            left: 0;
-        }
-
-        .nav-menu-dropdown.is-open {
+        .is-open .nav-menu {
             display: block;
         }
 
         .nav-menu {
+            display: none;
+
+            background-color: #000;
+            color: #fff;
+
+            position: absolute;
+            left: 0;
+            right: 0;
+
             margin: 0;
             padding-left: 0;
             list-style: none;
+
             border-top: 1px solid #ccc;
             border-bottom: 1px solid #ccc;
-            background-color: #000;
-            color: #fff;
         }
 
         .nav-menu > li + li {
@@ -106,8 +96,8 @@
         }
 
         .nav-menu > li > a {
-            padding: 0.8em 1em;
             display: block;
+            padding: 1.5em;
             font-weight: normal;
             color: white;
         }
@@ -128,23 +118,50 @@
         .nav-menu > li > a:active {
         }
 
+        .main {
+            padding: 2em;
+        }
+
+        @media screen and (min-width: 40em) {
+            .nav-menu-toggle {
+                display: none;
+            }
+
+            .nav-menu {
+                display: flex;
+                position: static;
+
+                border: 0;
+                padding: 0.5em 1em;
+            }
+
+            .nav-menu > li + li {
+                border-top: none;
+            }
+
+            .nav-menu > li > a {
+                display: block;
+                padding: 0.6em 2em;
+                font-weight: normal;
+                color: white;
+            }
+        }
+
     </style>
 </head>
 <body>
 
-<header class="header"></header>
-
-<nav class="nav">
+<header class="header">
     <button class="nav-menu-toggle" id="nav-menu-toggle">Toggle</button>
-    <div class="nav-menu-dropdown" id="nav-menu-dropdown">
+    <nav class="nav" id="nav-menu-dropdown">
         <ul class="nav-menu">
             <li><a href="#profile">Profile</a></li>
             <li><a href="#career">Career</a></li>
             <li><a href="#blog">Blog</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-    </div>
-</nav>
+    </nav>
+</header>
 
 <main class="main">
     <section id="profile">
@@ -173,8 +190,6 @@
             var menu = document.getElementById('nav-menu-dropdown');
             menu.classList.toggle('is-open');
         });
-
-
     })();
 </script>
 </body>
